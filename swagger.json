@@ -1,0 +1,351 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is a task by Amira abdelhady.",
+    "version": "1.0.0",
+    "title": "Task using Node js ,Express and MongoDB",
+    "contact": {
+      "email": "amiraabdelhady885@gmail.com"
+    }
+  },
+  "host": "localhost:3000",
+  "tags": [
+    {
+      "name": "Users",
+      "description": "Access to Users"
+    },
+    {
+      "name": "Devices",
+      "description": "Operations about Devices"
+    }
+  ],
+  "schemes": [
+    "https",
+    "http"
+  ],
+  "paths": {
+    "/device/postDevice": {
+      "post": {
+        "tags": [
+          "Devices"
+        ],
+        "summary": "Add a new device",
+        "operationId": "addDevice",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "formData",
+            "description": "Updated name of the device",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "description",
+            "in": "formData",
+            "description": "Updated description of the device",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "owner",
+            "in": "formData",
+            "description": "Updated owner of the device",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "imagePath",
+            "in": "formData",
+            "description": "Updated imagePath of the device",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "price",
+            "in": "formData",
+            "description": "Updated price of the device",
+            "required": true,
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "device added successfully"
+          },
+          "500": {
+            "description": "Error Faild!"
+          }
+        }
+      }
+    },
+    "/device/{deviceId}": {
+      "get": {
+        "tags": [
+          "Devices"
+        ],
+        "summary": "Find pet by ID",
+        "description": "Returns a single device",
+        "operationId": "getPetById",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "ID of device to return",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "404": {
+            "description": "device not found"
+          },
+          "500": {
+            "description": "Fetching device Failed!!"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Devices"
+        ],
+        "summary": "Updates a device in the store with form data",
+        "description": "",
+        "operationId": "updateDeviceWithForm",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "description": "ID of device that needs to be updated",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "name",
+            "in": "formData",
+            "description": "Updated name of the device",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "description",
+            "in": "formData",
+            "description": "Updated description of the device",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "owner",
+            "in": "formData",
+            "description": "Updated owner of the device",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "imagePath",
+            "in": "formData",
+            "description": "Updated imagePath of the device",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "price",
+            "in": "formData",
+            "description": "Updated price of the device",
+            "required": true,
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Update successful!"
+          },
+          "500": {
+            "description": "Updating Failed!!"
+          }
+        }
+      }
+    },
+    "/device/getUserDevices": {
+      "get": {
+        "tags": [
+          "Devices"
+        ],
+        "summary": "Get all devices for current user ",
+        "description": "Get all devices for current user",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Devices fetched successfully!"
+          },
+          "500": {
+            "description": "Fetching Devices Failed!!"
+          }
+        }
+      }
+    },
+    "/user/userSignup": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "User Sign Up",
+        "description": "",
+        "operationId": "usersignupWithForm",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "formData",
+            "description": "User Email",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "in": "formData",
+            "description": " User Password ",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "User created!"
+          },
+          "500": {
+            "description": "Email Already Exist"
+          }
+        }
+      }
+    },
+    "/user/userLogin": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Logs user into the system",
+        "description": "",
+        "operationId": "userLoginWithForm",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "formData",
+            "description": "The user email for login",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "in": "formData",
+            "description": "The password for login in clear text",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": " ",
+            "schema": {
+              "type": "string"
+            },
+            "headers": {
+              "X-Expires-After": {
+                "type": "string",
+                "format": "date-time",
+                "description": "date in UTC when token expires"
+              }
+            }
+          },
+          "401": {
+            "description": "Invalid username/password supplied"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "User": {
+      "type": "object",
+      "required": [
+        "email",
+        "password"
+      ],
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "Device": {
+      "type": "object",
+      "required": [
+        "name",
+        "description",
+        "owner",
+        "price",
+        "imagePath",
+        "ownerId"
+      ],
+      "properties": {
+        "ownerId": {
+          "$ref": "#/definitions/User"
+        },
+        "name": {
+          "type": "string",
+          "example": "device 1"
+        },
+        "description": {
+          "type": "string"
+        },
+        "owner": {
+          "type": "string"
+        },
+        "price": {
+          "type": "number"
+        },
+        "imagePath": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  }
+}
